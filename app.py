@@ -45,7 +45,7 @@ async def move_left():
 @app.get("/deploy")
 async def deploy():
     subprocess.run('sh deploy.sh', shell=True)
-    return {"message": "Deployed!"}
+    return {"message": "Deployed! 123"}
 
 
 if __name__ == "__main__":
