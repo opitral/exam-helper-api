@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from telebot import TeleBot
 import uvicorn
 
+import subprocess
+
 load_dotenv()
 app = FastAPI()
 bot = TeleBot(getenv("TELEGRAM_BOT_TOKEN"))
@@ -45,16 +47,27 @@ async def move_left():
     return {"message": "Tap!"}
 
 
-@app.get("/delpoy")
+@app.get("/deploy")
 async def deploy():
-    os.system('''
-        cd ~/exam-helper-bot;
-        git pull;
-        pm2 restart exam;
-        cd ~/exam-helper-api;
-        git pull;
-        pm2 restart 1488;
-    ''')
+    # os.system('''
+    #     cd ~/exam-helper-bot;
+    #     git pull;
+    #     pm2 restart exam;
+    #     cd ~/exam-helper-api;
+    #     git pull;
+    #     pm2 restart 1488;
+    # ''')
+
+    # subprocess.run(['sh ~/exam-hepler-api/deploy.sh'])
+    # subprocess.run(['git', 'pull'])
+    # subprocess.run(['pm2', 'restart exam'])
+    # subprocess.run(['cd', '~/exam-helper-api'])
+    # subprocess.run(['git', 'pull'])
+    # subprocess.run(['pm2', 'restart 1488'])
+    process = subprocess.run('sh deploy.sh', shell=True) 
+
+
+    return {"message": "Deployed!"}
 
 
 if __name__ == "__main__":
