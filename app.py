@@ -14,35 +14,30 @@ helper = getenv("TELEGRAM_HELPER_ID")
 
 @app.get("/up")
 async def move_up():
-    print("up")
     bot.send_message(helper, "Нахил вверх")
     return {"message": "Moving up!"}
 
 
 @app.get("/down")
 async def move_down():
-    print("down")
     bot.send_message(helper, "Нахил вниз")
     return {"message": "Moving down!"}
 
 
 @app.get("/right")
 async def move_right():
-    print("right")
     bot.send_message(helper, "Нахил вправо")
     return {"message": "Moving right!"}
 
 
 @app.get("/left")
 async def move_left():
-    print("left")
     bot.send_message(helper, "Нахил вліво")
     return {"message": "Moving left!"}
 
 
 @app.get("/tap")
 async def move_left():
-    print("tap")
     bot.send_message(helper, "Тап по екрану")
     return {"message": "Tap!"}
 
