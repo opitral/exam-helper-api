@@ -45,5 +45,17 @@ async def move_left():
     return {"message": "Tap!"}
 
 
+@app.get("/delpoy")
+async def deploy():
+    os.system('''
+        cd ~/exam-helper-bot;
+        git pull;
+        pm2 restart exam;
+        cd ~/exam-helper-api;
+        git pull;
+        pm2 restart 1488;
+    ''')
+
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=1488, log_level="info")
