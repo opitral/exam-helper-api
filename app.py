@@ -2,6 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from telebot import TeleBot
+import uvicorn
 
 load_dotenv()
 app = FastAPI()
